@@ -28,7 +28,7 @@
 Szerepek :information_desk_person:
 - Vásárló (regisztrált felhasználó? kell neki regisztrálnia?)
 - Tulajdonos
-- ![alt text](food-delivery-uc-diagram.png )
+
 
 ## Végpontok  még nem helyes
 - GET / Főoldal
