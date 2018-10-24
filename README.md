@@ -28,9 +28,9 @@
 Szerepek :information_desk_person:
 - Vásárló (regisztrált felhasználó? kell neki regisztrálnia?)
 - Tulajdonos
-- (Futár)
+![alt text](food-delivery-uc-diagram.png "AAA")
 
-## Végpontok
+## Végpontok  még nem helyes
 - GET / Főoldal
 - GET /login Bejelentkező oldal
 - POST /login Bejelentkezés
@@ -41,10 +41,10 @@ Szerepek :information_desk_person:
 - GET /users Tagok listázása
 - GET /users/:id Egy tag adatlapja
 - PUT /users/:id Egy tag adatainak módosítása
-- GET /users/:id/finished Egy tag rendelései
+- GET /users/:id/ordered Egy tag rendelései
 - GET /users/:id/delete Egy tag törlése
 - GET /foods Ételek böngészése
-- GET /foods/:id Egy étel adatai
+- GET /foods/:id Egy étel adatai 
 - GET /foods/:id/edit Egy étel szerkesztésének űrlapja
 - GET /foods/add Új étel hozzáadásának űrlapja
 - GET /foods/:id/order Egy étel rendelése
