@@ -34,18 +34,42 @@ Szerepek :information_desk_person:
 - GET / Főoldal
 - GET /login Bejelentkező oldal
 - POST /login Bejelentkezés
+
+- GET /employees Dolgozók adatai
+- GET /employees/:id Adott dolgozó adata
+- POST /employees ?
+- PUT /employees/:id ?
+- DELETE /employees/:id Adott dolgozó törlése 
+
+- GET /categories Kategóriák
+- GET /categories/:id Adott kategória
+- POST /categories ?
+- PUT /categories/:id ?
+- DELETE /categories/:id ?
+
+- GET /products Ételek böngészése
+- GET /products/:id Egy étel adatai 
+- POST /products ?
+- PUT /products/:id Étel felvétele
+- DELETE /products/:id Étel törlése
+kellene még szerintem:
+- GET /products/:id/edit Egy étel szerkesztésének űrlapja
+
+- GET /purchases Kosár tartalma
+- GET /purchases/:id ?
+- POST /purchases Rendelés küldése
+- PUT /purchases/:id Adott termék módosítása a kosárban
+- DELETE /purchases/:id Adott termék törlése a kosárból
+
+
+szerintem kellene még:
 - GET /logout Kijelentkezés
 - GET /register Regisztrációs oldal
 - POST /register Regisztrálás
-- GET /categories Kategóriák
+
 - GET /users Tagok listázása
 - GET /users/:id Egy tag adatlapja
-- PUT /users/:id Egy tag adatainak módosítása
+- PUT /users/:id/edit Egy tag adatainak módosítása
 - GET /users/:id/ordered Egy tag rendelései
 - GET /users/:id/delete Egy tag törlése
-- GET /foods Ételek böngészése
-- GET /foods/:id Egy étel adatai 
-- GET /foods/:id/edit Egy étel szerkesztésének űrlapja
-- GET /foods/add Új étel hozzáadásának űrlapja
-- GET /foods/:id/order Egy étel rendelése
-- GET /foods/:id/delete Egy étel rendelésének visszavonása
+
