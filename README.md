@@ -40,6 +40,8 @@ Szerepek :information_desk_person:
 - POST /employees ?
 - PUT /employees/:id ?
 - DELETE /employees/:id Adott dolgozó törlése 
+- GET /employees/purchases Listázódnak a dolgozók belépésekor a rendelések
+
 
 - GET /categories Kategóriák
 - GET /categories/:id Adott kategória

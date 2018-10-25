@@ -1,7 +1,11 @@
 package hu.elte.FoodDelivery.controllers;
 
 import hu.elte.FoodDelivery.entities.Employee;
+import hu.elte.FoodDelivery.entities.Purchase;
 import hu.elte.FoodDelivery.repositories.EmployeeRepository;
+import hu.elte.FoodDelivery.repositories.PurchaseRepository;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +24,9 @@ public class EmployeeController {
 
     @Autowired
     private EmployeeRepository employeeRepository;
+    
+    @Autowired
+    private PurchaseRepository purchaseRepository;
 
     @GetMapping("")
     public ResponseEntity<Iterable<Employee>> getAll() {
@@ -62,5 +69,31 @@ public class EmployeeController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    
+    @GetMapping("/purchases")
+    public ResponseEntity<Iterable<Purchase>> getPurchases() {
+        return ResponseEntity.ok(purchaseRepository.findAll());
+    }
+        
+    @GetMapping("/purchases/delivered")
+    public ResponseEntity<Iterable<Purchase>> getDeliveredPurchases() {
+        List<Purchase> deliveredPurchases = new ArrayList<>();
+        deliveredPurchases = purchaseRepository.findAllByIsDelivered(true);
+        if(deliveredPurchases.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(deliveredPurchases);
+    }
+    
+    
+    @GetMapping("/purchases/notDelivered")
+    public ResponseEntity<Iterable<Purchase>> getNotDeliveredPurchases() {
+        List<Purchase> deliveredPurchases = new ArrayList<>();
+        deliveredPurchases = purchaseRepository.findAllByIsDelivered(false);
+        if(deliveredPurchases.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(deliveredPurchases);
     }
 }

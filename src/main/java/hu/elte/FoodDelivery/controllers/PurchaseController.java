@@ -2,6 +2,8 @@ package hu.elte.FoodDelivery.controllers;
 
 import hu.elte.FoodDelivery.entities.Purchase;
 import hu.elte.FoodDelivery.repositories.PurchaseRepository;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -62,5 +64,78 @@ public class PurchaseController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    
+    @PutMapping("/delivered/{id}")
+    public ResponseEntity<Purchase> completePurchase (@PathVariable Integer id) {
+        Optional<Purchase> oPurchase = purchaseRepository.findById(id);
+        if (oPurchase.isPresent()) {
+            Purchase purchase = oPurchase.get();
+            purchase.setDelivered(true);
+            return ResponseEntity.ok(purchaseRepository.save(purchase));
+        }
+        return ResponseEntity.notFound().build();
+    }
+    
+    @GetMapping("/isDelivered")
+    public ResponseEntity<Iterable<Purchase>> isDelivered() {
+        Iterable<Purchase> purchase = purchaseRepository.findAll();
+        List<Purchase> list = new ArrayList<>();
+        for(Purchase p : purchase){
+            if(p.isDelivered()){
+                list.add(p);
+            }
+        }
+        if(list.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }else{
+            return ResponseEntity.ok(list); 
+        }       
+    }
+    
+    @GetMapping("/isDelivered/{id}")
+    public ResponseEntity<Iterable<Purchase>> isDeliveredId(@PathVariable Integer id) {        
+        Optional<Purchase> oPurchase = purchaseRepository.findById(id);
+        List<Purchase> list = new ArrayList<>();
+        if (oPurchase.isPresent() && oPurchase.get().isDelivered()) {
+            Purchase purchase = oPurchase.get();
+            list.add(purchase);
+        }
+        if(list.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }else{
+            return ResponseEntity.ok(list); 
+        }       
+    }
+    
+    @GetMapping("/isNotDelivered")
+    public ResponseEntity<Iterable<Purchase>> isNotDelivered() {
+        Iterable<Purchase> purchase = purchaseRepository.findAll();
+        List<Purchase> list = new ArrayList<>();
+        for(Purchase p : purchase){
+            if(!p.isDelivered()){
+                list.add(p);
+            }
+        }
+        if(list.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }else{
+            return ResponseEntity.ok(list); 
+        }       
+    }
+    
+    @GetMapping("/isNotDelivered/{id}")
+    public ResponseEntity<Iterable<Purchase>> isNotDeliveredById(@PathVariable Integer id) {        
+        Optional<Purchase> oPurchase = purchaseRepository.findById(id);
+        List<Purchase> list = new ArrayList<>();
+        if (oPurchase.isPresent() && !(oPurchase.get().isDelivered())) {
+            Purchase purchase = oPurchase.get();
+            list.add(purchase);
+        }
+        if(list.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }else{
+            return ResponseEntity.ok(list); 
+        }       
     }
 }

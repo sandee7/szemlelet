@@ -10,4 +10,6 @@ insert into product(product_name,description,price,is_spicy,is_vegetarian, creat
 insert into employee(employee_name,username,password, created_at, updated_at) values ('name1', 'proba2', 'pass', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
 insert into purchase(order_name,address,phone_number,is_delivered, created_at, updated_at) values ('prder1','proba1','030312342',false, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+insert into purchase(product_id,order_name,address,phone_number,is_delivered, created_at, updated_at) values (2,'prder2','proba2','230312342',false, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+insert into purchase(product_id,order_name,address,phone_number,is_delivered, created_at, updated_at) values (3,'prder3','proba3','330312342',true, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
