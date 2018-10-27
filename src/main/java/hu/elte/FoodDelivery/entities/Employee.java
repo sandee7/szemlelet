@@ -3,6 +3,8 @@ package hu.elte.FoodDelivery.entities;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,16 +27,14 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column
+    @Column(unique = true)
     @NotNull
     private String employee_name;
 
-    @Column
-    @NotNull
+    @Column(nullable = false)
     private String username;
 
-    @Column
-    @NotNull
+    @Column(nullable = false)
     private String password;
 
     @Column
@@ -44,4 +44,15 @@ public class Employee {
     @Column
     @UpdateTimestamp
     private LocalDateTime updated_at;
+    
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    
+    public enum Role {
+        ROLE_OWNER, ROLE_EMPLOYEE//ha esetleg kelleni fog
+    }
+    
+    @Column(nullable = false)
+    private boolean enabled;
 }

@@ -1,7 +1,10 @@
 package hu.elte.FoodDelivery.controllers;
 
 import hu.elte.FoodDelivery.entities.Category;
+import hu.elte.FoodDelivery.entities.Product;
 import hu.elte.FoodDelivery.repositories.CategoryRepository;
+import hu.elte.FoodDelivery.repositories.ProductRepository;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +23,9 @@ public class CategoryController {
 
     @Autowired
     private CategoryRepository categoryRepository;
+    
+    @Autowired
+    private ProductRepository productRepository;
 
     @GetMapping("")
     public ResponseEntity<Iterable<Category>> getAll() {
@@ -33,7 +39,25 @@ public class CategoryController {
             return ResponseEntity.ok(category.get());
         } else {
             return ResponseEntity.notFound().build();
-        }
+        }        
+    }
+    
+    //A kategóriát kiválasztva listázódnak a tételek (név és ár kíséretében), 
+    //amelyek szűrhetőek név(részlet)re
+    @GetMapping("/{id}/products")
+    public ResponseEntity<List<Product>> getProductOfGivenCategory(
+            @PathVariable Integer id, String passage) {
+        Optional<Category> category = categoryRepository.findById(id);
+        List<Product> product = productRepository.findAllByCategoryId(id);
+        if (!product.isEmpty()) {
+           /* if(passage.length() > 0 && 
+                    productRepository.findAllByProductName().contains(passage)){
+                //return ResponseEntity.ok(productRepository.findAllByProductName(passage).);
+        }*/
+            return ResponseEntity.ok(product);
+        } else {
+            return ResponseEntity.notFound().build();
+        }        
     }
 
     @PostMapping("")
@@ -43,7 +67,8 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Category> update(@PathVariable Integer id, @RequestBody Category category) {
+    public ResponseEntity<Category> update(@PathVariable Integer id, 
+            @RequestBody Category category) {
         Optional<Category> optCategory = categoryRepository.findById(id);
         if (optCategory.isPresent()) {
             category.setId(id);
@@ -62,5 +87,12 @@ public class CategoryController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    
+    //10 legnepszerubb étel/ital megjelenese a fooldalon
+    @GetMapping("/getMostOrderedFoods")
+    public ResponseEntity<Category> getMostOrderedFoods() {
+        //CategoryRepository.categoryOfOrderedFood.
+        return ResponseEntity.notFound().build();
     }
 }

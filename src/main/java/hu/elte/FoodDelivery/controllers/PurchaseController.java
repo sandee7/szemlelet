@@ -1,6 +1,9 @@
 package hu.elte.FoodDelivery.controllers;
 
+import hu.elte.FoodDelivery.entities.Product;
 import hu.elte.FoodDelivery.entities.Purchase;
+import hu.elte.FoodDelivery.repositories.CategoryRepository;
+import hu.elte.FoodDelivery.repositories.ProductRepository;
 import hu.elte.FoodDelivery.repositories.PurchaseRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +41,19 @@ public class PurchaseController {
         }
     }
 
+    //Ételek és italok tetszőleges számban helyezhetőeka kosárba egy adott felső
+    //korlátig (20.000 Ft), afelett több terméket nem lehet a kosárba helyezni.
+    //EZ LEHET NEM JO, nem tudom, hogy kell kiprobalni
     @PostMapping("")
-    public ResponseEntity<Purchase> post(@RequestBody Purchase purchase) {
-        Purchase savedPurchase = purchaseRepository.save(purchase);
-        return ResponseEntity.ok(savedPurchase);
+    public ResponseEntity<Purchase> post(@RequestBody Purchase purchase,
+            @RequestBody Product product) {        
+        if((purchase.getSumma()+product.getPrice()) <= 20000){//TODO: le kell a projekt indításakor nullázni a summat
+            purchase.setSumma(product.getPrice());
+            Purchase savedPurchase = purchaseRepository.save(purchase);
+            CategoryRepository.categoryOfOrderedFood.add(purchase.getProduct());//talan arra jo lesz, ha majd a 10 legnepszerubbre szurunk
+            return ResponseEntity.ok(savedPurchase);
+        }
+        return ResponseEntity.badRequest().build();
     }
 
     @PutMapping("/{id}")
@@ -66,8 +78,8 @@ public class PurchaseController {
         }
     }
     
-    @PutMapping("/delivered/{id}")
-    public ResponseEntity<Purchase> completePurchase (@PathVariable Integer id) {
+    @PutMapping("/takePurchaseDelivered/{id}")
+    public ResponseEntity<Purchase> takePurchaseDelivered (@PathVariable Integer id) {
         Optional<Purchase> oPurchase = purchaseRepository.findById(id);
         if (oPurchase.isPresent()) {
             Purchase purchase = oPurchase.get();
@@ -78,7 +90,7 @@ public class PurchaseController {
     }
     
     @GetMapping("/isDelivered")
-    public ResponseEntity<Iterable<Purchase>> isDelivered() {
+    public ResponseEntity<List<Purchase>> isDelivered() {
         Iterable<Purchase> purchase = purchaseRepository.findAll();
         List<Purchase> list = new ArrayList<>();
         for(Purchase p : purchase){
@@ -94,7 +106,7 @@ public class PurchaseController {
     }
     
     @GetMapping("/isDelivered/{id}")
-    public ResponseEntity<Iterable<Purchase>> isDeliveredId(@PathVariable Integer id) {        
+    public ResponseEntity<List<Purchase>> isDeliveredId(@PathVariable Integer id) {        
         Optional<Purchase> oPurchase = purchaseRepository.findById(id);
         List<Purchase> list = new ArrayList<>();
         if (oPurchase.isPresent() && oPurchase.get().isDelivered()) {
@@ -125,7 +137,8 @@ public class PurchaseController {
     }
     
     @GetMapping("/isNotDelivered/{id}")
-    public ResponseEntity<Iterable<Purchase>> isNotDeliveredById(@PathVariable Integer id) {        
+    public ResponseEntity<Iterable<Purchase>> isNotDeliveredById(
+            @PathVariable Integer id) {        
         Optional<Purchase> oPurchase = purchaseRepository.findById(id);
         List<Purchase> list = new ArrayList<>();
         if (oPurchase.isPresent() && !(oPurchase.get().isDelivered())) {
