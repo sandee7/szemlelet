@@ -62,6 +62,8 @@ Szerepek :information_desk_person:
 - PUT /purchases/:id Adott termék módosítása a kosárban
 - DELETE /purchases/:id Adott termék törlése a kosárból
 
+
+
 kell még:
 - POST /logout Kijelentkezés
 
