@@ -32,46 +32,42 @@ Szerepek :information_desk_person:
 
 ## Végpontok  még nem helyes
 - GET / Főoldal
-- GET /login Bejelentkező oldal
+- POST /register Regisztrálás
 - POST /login Bejelentkezés
 
 - GET /employees Dolgozók adatai
 - GET /employees/:id Adott dolgozó adata
-- POST /employees ?
-- PUT /employees/:id ?
-- DELETE /employees/:id Adott dolgozó törlése 
+- POST /employees/:id Új dolgozó felvitele
+- PUT /employees/:id Az adott id-val rendelkező dolgozó adatainak frissítése
+- DELETE /employees/:id Adott id-val rendelkező dolgozó törlése 
 - GET /employees/purchases Listázódnak a dolgozók belépésekor a rendelések
+- GET /employees/purchases/delivered Listázódnak a kiszállított rendelések
+- GET /employees/purchases/notDelivered Listázódnak a nem kiszállított rendelések
 
-
-- GET /categories Kategóriák
+- GET /categories Az összes kategória 
 - GET /categories/:id Adott kategória
-- POST /categories ?
-- PUT /categories/:id ?
-- DELETE /categories/:id ?
+- POST /categories Új kategória felvitele
+- PUT /categories/:id Adott id-val rendelkező kategória módosítása
+- DELETE /categories/:id Adott id-val rendelkező kategória törlése
 
-- GET /products Ételek böngészése
-- GET /products/:id Egy étel adatai 
-- POST /products ?
-- PUT /products/:id Étel felvétele
-- DELETE /products/:id Étel törlése
-kellene még szerintem:
-- GET /products/:id/edit Egy étel szerkesztésének űrlapja
+- GET /products Az összes termék
+- GET /products/:id Adott termék 
+- POST /products Új termék felvétele
+- PUT /products/:id Adott id-val rendelkező termék módosítása
+- DELETE /products/:id Adott id-val rendelkező termék törlése
 
-- GET /purchases Kosár tartalma
-- GET /purchases/:id ?
-- POST /purchases Rendelés küldése
+- GET /purchases Az összes rendelés
+- GET /purchases/:id Adott rendelés
+- POST /purchases Új rendelés felvitele
 - PUT /purchases/:id Adott termék módosítása a kosárban
 - DELETE /purchases/:id Adott termék törlése a kosárból
 
-
 szerintem kellene még:
-- GET /logout Kijelentkezés
+- POST /logout Kijelentkezés
 - GET /register Regisztrációs oldal
-- POST /register Regisztrálás
 
 - GET /users Tagok listázása
 - GET /users/:id Egy tag adatlapja
 - PUT /users/:id/edit Egy tag adatainak módosítása
 - GET /users/:id/ordered Egy tag rendelései
 - GET /users/:id/delete Egy tag törlése
-
