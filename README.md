@@ -62,12 +62,12 @@ Szerepek :information_desk_person:
 - PUT /purchases/:id Adott termék módosítása a kosárban
 - DELETE /purchases/:id Adott termék törlése a kosárból
 
-szerintem kellene még:
+kell még:
 - POST /logout Kijelentkezés
-- GET /register Regisztrációs oldal
 
 - GET /users Tagok listázása
-- GET /users/:id Egy tag adatlapja
-- PUT /users/:id/edit Egy tag adatainak módosítása
+- GET /users/:id Adott tag
+- POST /users Új tag felvitele
+- PUT /users/:id Egy tag adatainak módosítása
 - GET /users/:id/ordered Egy tag rendelései
-- GET /users/:id/delete Egy tag törlése
+- DELETE /users/:id Adott tag törlése
