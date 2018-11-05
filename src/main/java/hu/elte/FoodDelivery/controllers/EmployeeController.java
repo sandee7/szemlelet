@@ -4,13 +4,13 @@ import hu.elte.FoodDelivery.entities.Employee;
 import hu.elte.FoodDelivery.entities.Purchase;
 import hu.elte.FoodDelivery.repositories.EmployeeRepository;
 import hu.elte.FoodDelivery.repositories.PurchaseRepository;
-//import hu.elte.FoodDelivery.security.AuthenticatedUser;
+import hu.elte.FoodDelivery.security.AuthenticatedUser;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,25 +30,18 @@ public class EmployeeController {
     @Autowired
     private PurchaseRepository purchaseRepository;
     
-    /*@Autowired
+    @Autowired
     private BCryptPasswordEncoder passwordEncoder;
     
     @Autowired 
-    private AuthenticatedUser authenticatedEmployee;*/
+    private AuthenticatedUser authenticatedEmployee;
      
     @GetMapping("")
     public ResponseEntity<Iterable<Employee>> getAll() {
-       /* Employee employee = authenticatedEmployee.getEmployee();
-        Employee.Role role = employee.getRole();
-        if (role.equals(Employee.Role.ROLE_EMPLOYEE)) {
-            return ResponseEntity.ok(employeeRepository.findAll());
-        } else {
-            return ResponseEntity.notFound().build();
-        }*/
        return ResponseEntity.ok(employeeRepository.findAll());
     }
     
-    /*@PostMapping("register")
+    @PostMapping("/register")
     public ResponseEntity<Employee> register(@RequestBody Employee user) {
         Optional<Employee> oUser = employeeRepository.findByUsername(user.getUsername());
         if (oUser.isPresent()) {
@@ -63,7 +56,7 @@ public class EmployeeController {
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody Employee user) {
         return ResponseEntity.ok().build();
-    }*/
+    }
     
     @GetMapping("/{id}")
     public ResponseEntity<Employee> get(@PathVariable Integer id) {
