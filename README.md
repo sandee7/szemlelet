@@ -28,6 +28,7 @@
 Szerepek :information_desk_person:
 - Vásárló
 - Tulajdonos
+- Vendég
 # ![alt text](food-delivery-uc-diagram.png)
 
 ## Végpontok
