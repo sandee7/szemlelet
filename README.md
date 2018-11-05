@@ -30,7 +30,7 @@ Szerepek :information_desk_person:
 - Tulajdonos
 # ![alt text](food-delivery-uc-diagram.png)
 
-## Végpontok  még nem helyes
+## Végpontok
 - GET / Főoldal
 - POST /register Regisztrálás
 - POST /login Bejelentkezés
@@ -61,13 +61,3 @@ Szerepek :information_desk_person:
 - POST /purchases Új rendelés felvitele
 - PUT /purchases/:id Adott termék módosítása a kosárban
 - DELETE /purchases/:id Adott termék törlése a kosárból
-
-kell még:
-- POST /logout Kijelentkezés
-
-- GET /users Tagok listázása
-- GET /users/:id Adott tag
-- POST /users Új tag felvitele
-- PUT /users/:id Egy tag adatainak módosítása
-- GET /users/:id/ordered Egy tag rendelései
-- DELETE /users/:id Adott tag törlése
