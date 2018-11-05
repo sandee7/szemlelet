@@ -26,7 +26,7 @@
 
 ## Használatieset - modell
 Szerepek :information_desk_person:
-- Vásárló (regisztrált felhasználó? kell neki regisztrálnia?)
+- Vásárló
 - Tulajdonos
 # ![alt text](food-delivery-uc-diagram.png)
 
