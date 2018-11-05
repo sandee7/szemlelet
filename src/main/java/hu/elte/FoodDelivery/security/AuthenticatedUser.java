@@ -1,4 +1,4 @@
-/*package hu.elte.FoodDelivery.security;
+package hu.elte.FoodDelivery.security;
 
 import hu.elte.FoodDelivery.entities.Employee;
 import lombok.AllArgsConstructor;
@@ -14,4 +14,4 @@ import org.springframework.web.context.annotation.RequestScope;
 @AllArgsConstructor
 public class AuthenticatedUser {
     private Employee employee;
-}*/
+}

@@ -45,15 +45,9 @@ public class PurchaseController {
     //korlátig (20.000 Ft), afelett több terméket nem lehet a kosárba helyezni.
     //EZ LEHET NEM JO, nem tudom, hogy kell kiprobalni
     @PostMapping("")
-    public ResponseEntity<Purchase> post(@RequestBody Purchase purchase,
-            @RequestBody Product product) {        
-        if((purchase.getSumma()+product.getPrice()) <= 20000){//TODO: le kell a projekt indításakor nullázni a summat
-            purchase.setSumma(product.getPrice());
-            Purchase savedPurchase = purchaseRepository.save(purchase);
-            CategoryRepository.categoryOfOrderedFood.add(purchase.getProduct());//talan arra jo lesz, ha majd a 10 legnepszerubbre szurunk
-            return ResponseEntity.ok(savedPurchase);
-        }
-        return ResponseEntity.badRequest().build();
+    public ResponseEntity<Purchase> post(@RequestBody Purchase purchase) {        
+        Purchase savedPurchase = purchaseRepository.save(purchase);
+        return ResponseEntity.ok(savedPurchase);
     }
 
     @PutMapping("/{id}")

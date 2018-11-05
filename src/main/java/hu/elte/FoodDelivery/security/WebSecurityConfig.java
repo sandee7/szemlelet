@@ -1,4 +1,4 @@
-/*package hu.elte.FoodDelivery.security;
+package hu.elte.FoodDelivery.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -50,4 +50,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-}*/
+}

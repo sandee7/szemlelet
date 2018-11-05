@@ -1,4 +1,4 @@
-/*package hu.elte.FoodDelivery.security;
+package hu.elte.FoodDelivery.security;
 
 import hu.elte.FoodDelivery.entities.Employee;
 import hu.elte.FoodDelivery.repositories.EmployeeRepository;
@@ -37,4 +37,4 @@ public class MyUserDetailsService implements UserDetailsService{
 
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
-}*/
+}

@@ -51,14 +51,7 @@ public class Purchase {
     @Column
     @UpdateTimestamp
     private LocalDateTime updated_at;
-    
-    @Column(name = "summa", columnDefinition = "Decimal(10) default '0'")
-    private int summa;
-
-    public void setSumma(int i){
-        this.summa += i;
-    }
-    
+        
     @ManyToOne
     @JoinColumn
     @JsonIgnore
