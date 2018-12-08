@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/employees")
 public class EmployeeController {
@@ -41,7 +43,7 @@ public class EmployeeController {
        return ResponseEntity.ok(employeeRepository.findAll());
     }
     
-    @PostMapping("/register")
+    @PostMapping("register")
     public ResponseEntity<Employee> register(@RequestBody Employee user) {
         Optional<Employee> oUser = employeeRepository.findByUsername(user.getUsername());
         if (oUser.isPresent()) {
@@ -53,9 +55,9 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeRepository.save(user));
     }
      
-    @PostMapping("/login")
-    public ResponseEntity login(@RequestBody Employee user) {
-        return ResponseEntity.ok().build();
+    @PostMapping("login")
+     public ResponseEntity<Employee> login() {
+        return ResponseEntity.ok(authenticatedEmployee.getEmployee());
     }
     
     @GetMapping("/{id}")
