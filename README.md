@@ -23,6 +23,8 @@
 - ételek és italok(név, kategória, leírás, ár, csípős-e,  vegetáriánus-e);
 - munkatársak (teljes név, felhasználónév, jelszó);
 - rendelések (név, cím, telefonszám, megrendelt ételek és italok, teljesített-e)
+## Fejlesztői környezet
+- Netbeans 8.2
 
 ## Használatieset - modell
 Szerepek :information_desk_person:
