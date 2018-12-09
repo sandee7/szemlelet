@@ -23,6 +23,8 @@
 - ételek és italok(név, kategória, leírás, ár, csípős-e,  vegetáriánus-e);
 - munkatársak (teljes név, felhasználónév, jelszó);
 - rendelések (név, cím, telefonszám, megrendelt ételek és italok, teljesített-e)
+## Fejlesztői környezet
+- Netbeans 8.2
 
 ## Használatieset - modell
 Szerepek :information_desk_person:
@@ -62,3 +64,6 @@ Szerepek :information_desk_person:
 - POST /purchases Új rendelés felvitele
 - PUT /purchases/:id Adott termék módosítása a kosárban
 - DELETE /purchases/:id Adott termék törlése a kosárból
+
+# Adatbázisterv
+# ![alt text](food-delivery-db-diagram.png)
