@@ -64,3 +64,6 @@ Szerepek :information_desk_person:
 - POST /purchases Új rendelés felvitele
 - PUT /purchases/:id Adott termék módosítása a kosárban
 - DELETE /purchases/:id Adott termék törlése a kosárból
+
+# Adatbázisterv
+# ![alt text](food-delivery-db-diagram.png)
