@@ -25,6 +25,7 @@
 - rendelések (név, cím, telefonszám, megrendelt ételek és italok, teljesített-e)
 ## Fejlesztői környezet
 - Netbeans 8.2
+- Visual Studio Code
 
 ## Használatieset - modell
 Szerepek :information_desk_person:
